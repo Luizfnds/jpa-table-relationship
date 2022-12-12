@@ -1,4 +1,4 @@
-package com.lefnds.jpatablerelationship.models;
+package com.lefnds.jpatablerelationship.models.enums;
 
 public enum Gender {
 

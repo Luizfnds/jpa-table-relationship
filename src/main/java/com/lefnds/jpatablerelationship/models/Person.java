@@ -1,5 +1,7 @@
 package com.lefnds.jpatablerelationship.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lefnds.jpatablerelationship.models.enums.Gender;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,7 +24,11 @@ public class Person {
     @Column(name = "GENDER")
     private Gender gender;
     @OneToOne
+    @JsonIgnore
     private Person spouse;
-//    @ManyToOne
-//    private Profession profession;
+    @OneToMany
+    @JsonIgnore
+    private List<Phone> phone;
+//    @ManyToMany
+//    private List<Person> Parents;
 }

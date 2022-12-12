@@ -1,7 +1,9 @@
 package com.lefnds.jpatablerelationship.controllers;
 
 import com.lefnds.jpatablerelationship.models.Person;
+import com.lefnds.jpatablerelationship.models.Phone;
 import com.lefnds.jpatablerelationship.services.PersonService;
+import com.lefnds.jpatablerelationship.services.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,14 +14,14 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "/person")
-public class PersonController {
+@RequestMapping(value = "/phone")
+public class PhoneController {
 
     @Autowired
-    private PersonService service;
+    private PhoneService service;
 
     @PostMapping
-    public ResponseEntity<Person> insertTest(@RequestBody Person entity) {
+    public ResponseEntity<Phone> insertTest(@RequestBody Phone entity) {
         service.insert(entity);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(entity.getId()).toUri();
@@ -27,20 +29,20 @@ public class PersonController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Person>> findAll() {
+    public ResponseEntity<List<Phone>> findAll() {
         List list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Person> findById(@PathVariable UUID id) {
-        Person entity = service.findById(id);
+    public ResponseEntity<Phone> findById(@PathVariable UUID id) {
+        Phone entity = service.findById(id);
         return ResponseEntity.ok().body(entity);
     }
 
 
     @PutMapping(value = ("/{id}"))
-    public ResponseEntity<Person> update(@PathVariable UUID id, @RequestBody Person entity){
+    public ResponseEntity<Phone> update(@PathVariable UUID id, @RequestBody Phone entity){
         entity = service.update(id, entity);
         return ResponseEntity.ok().body(entity);
     }
