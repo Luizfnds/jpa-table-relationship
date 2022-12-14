@@ -1,5 +1,6 @@
 package com.lefnds.jpatablerelationship.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,6 +17,7 @@ public class Phone {
     @Column(name = "number")
     private String number;
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "id_holder")
+    @JsonIgnore
     private Person holder;
 }

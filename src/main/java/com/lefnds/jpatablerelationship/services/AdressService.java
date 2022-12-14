@@ -1,7 +1,7 @@
 package com.lefnds.jpatablerelationship.services;
 
-import com.lefnds.jpatablerelationship.models.Phone;
-import com.lefnds.jpatablerelationship.repositories.PhoneRepository;
+import com.lefnds.jpatablerelationship.models.Adress;
+import com.lefnds.jpatablerelationship.repositories.AdressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,20 +9,20 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class PhoneService {
+public class AdressService {
 
     @Autowired
-    private PhoneRepository repository;
+    private AdressRepository repository;
 
-    public Phone save(Phone entity) {
+    public Adress save(Adress entity) {
         return repository.save(entity);
     }
 
-    public List<Phone> findAll() {
+    public List<Adress> findAll() {
         return repository.findAll();
     }
 
-    public Phone findById(UUID id) {
+    public Adress findById(UUID id) {
         return repository.findById(id).get();
     }
 
@@ -30,14 +30,14 @@ public class PhoneService {
         repository.delete(repository.findById(id).get());
     }
 
-    public Phone update(UUID id, Phone entityUpdated) {
-        Phone entityNonUpdated = repository.findById(id).get();
+    public Adress update(UUID id, Adress entityUpdated) {
+        Adress entityNonUpdated = repository.findById(id).get();
         updateData(entityNonUpdated, entityUpdated);
         return repository.save(entityNonUpdated);
     }
 
-    private void updateData(Phone entity, Phone user) {
-        entity.setNumber(user.getNumber());
-        entity.setHolder(user.getHolder());
+    private void updateData(Adress entity, Adress user) {
+        entity.setCep(user.getCep());
+        entity.setResidents(user.getResidents());
     }
 }

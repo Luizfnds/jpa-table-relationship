@@ -15,7 +15,7 @@ public class PersonService {
     @Autowired
     private PersonRepository repository;
 
-    public Person insert(Person entity) {
+    public Person save(Person entity) {
         return repository.save(entity);
     }
 
@@ -43,5 +43,6 @@ public class PersonService {
         entity.setGender(user.getGender());
         entity.setSpouse(user.getSpouse());
         entity.setPhone(user.getPhone());
+        entity.setAdress(user.getAdress());
     }
 }
